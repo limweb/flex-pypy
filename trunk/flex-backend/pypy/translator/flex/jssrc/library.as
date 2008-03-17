@@ -9,6 +9,10 @@ _consts_0.flexTrace = function ( text:String ):void {
     sendToURL(myUrl);
 }
 
+_consts_0.castToWindow = function ( window ){
+    return window
+}
+
 // wrapper for throw, because flex compiler weirdness.
 _consts_0.throwit = function (e) {
     throw(e);
