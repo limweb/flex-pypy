@@ -28,12 +28,12 @@ import flash.net.*;
 public function localFlexTrace ( text:String ):void {
     var myUrl:URLRequest = new URLRequest("javascript:console.log('" + text + "');void(0);");
     sendToURL(myUrl);
+    trace(text);
 }
 
 function __flash_main() {
 
     localFlexTrace("Starting...");
-    trace("Starting...");
 
 
     try {
@@ -41,8 +41,6 @@ function __flash_main() {
     } catch (exc) {
         localFlexTrace("consts error");
         localFlexTrace(String(exc));
-        trace("consts error");
-        trace(String(exc));
     }
     try {
         flash_main(this)
@@ -51,14 +49,9 @@ function __flash_main() {
         localFlexTrace(String(exc));
         localFlexTrace(String(exc.message));
         localFlexTrace(exc.getStackTrace());
-        trace("flash_main error");
-        trace(String(exc));
-        trace(String(exc.message));
-        trace(exc.getStackTrace());
         
     }
     localFlexTrace("Exit");
-    trace("Exit");
 
 }
 
