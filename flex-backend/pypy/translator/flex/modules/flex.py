@@ -20,6 +20,8 @@ class Button(BasicExternal):
     _fields = {
         'x': int,
         'y': int,
+        'label':str,
+        'labelPlacement':str,
     }
 
     _methods = {
