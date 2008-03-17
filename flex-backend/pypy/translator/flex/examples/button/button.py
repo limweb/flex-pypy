@@ -4,6 +4,7 @@ from pypy.rpython.ootypesystem.bltregistry import BasicExternal, MethodDesc
 def flash_main( x=1 ):
 
     b = Button()
+    b.label = "Hello world!"
     b.x=20
     b.y=52
 
