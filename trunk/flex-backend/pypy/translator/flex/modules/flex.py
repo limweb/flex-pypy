@@ -1,6 +1,6 @@
 from pypy.rpython.extfunc import genericcallable, register_external
 from pypy.rpython.ootypesystem.bltregistry import BasicExternal, MethodDesc
-
+from pypy.translator.flex.asmgen import add_import
 
 def flexTrace(s):
     pass
@@ -15,9 +15,9 @@ def addChild(what):
 register_external(addChild, args=None, export_name="addChild")
     
     
+add_import("mx.controls.Button")
 class Button(BasicExternal):
-    _render_name = "Button"
-    _render_class = "Button"
+    _render_class = "mx.controls.Button"
     _fields = {
         'x': int,
         'y': int,
