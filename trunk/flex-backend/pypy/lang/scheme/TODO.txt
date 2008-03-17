@@ -1,0 +1,32 @@
+Do now
+------
+
+- lambda called with wrong number of args issue
+
+Do next
+-------
+
+- definitions: let*
+
+- symbols vs identifier, which name is better
+  - global dict for symbols _obarray_
+
+- implement key functions
+  (apply, reduce, mapcar and so on)
+  # reduce will not make into python 3.0 ;)
+
+- comparison: < > eq? eqv?
+
+Do in some future
+-----------------
+
+Here starts the real fun!
+
+- quasi-quotations
+- macros
+- delayed evaluation
+- continuations
+- proper tail-recursion
+  - mutually recursive procedures (r5rs p.12)
+- switch to byte-code generation + eval instead of evaluating AST
+
