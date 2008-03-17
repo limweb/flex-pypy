@@ -42,7 +42,7 @@ function __flash_main() {
         localFlexTrace(String(exc));
     }
     try {
-        flash_main(1)
+        flash_main(this)
     } catch (exc) {
         localFlexTrace("flash_main error");
         localFlexTrace(String(exc));
