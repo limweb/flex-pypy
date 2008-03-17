@@ -33,6 +33,7 @@ public function localFlexTrace ( text:String ):void {
 function __flash_main() {
 
     localFlexTrace("Starting...");
+    trace("Starting...");
 
 
     try {
@@ -40,6 +41,8 @@ function __flash_main() {
     } catch (exc) {
         localFlexTrace("consts error");
         localFlexTrace(String(exc));
+        trace("consts error");
+        trace(String(exc));
     }
     try {
         flash_main(this)
@@ -48,9 +51,14 @@ function __flash_main() {
         localFlexTrace(String(exc));
         localFlexTrace(String(exc.message));
         localFlexTrace(exc.getStackTrace());
+        trace("flash_main error");
+        trace(String(exc));
+        trace(String(exc.message));
+        trace(exc.getStackTrace());
         
     }
     localFlexTrace("Exit");
+    trace("Exit");
 
 }
 
