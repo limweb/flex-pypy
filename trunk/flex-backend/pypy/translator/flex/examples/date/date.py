@@ -19,11 +19,11 @@ class Date(BasicExternal):
     # This lists the methods. The required argument for MethodDesc is a list of arguments (which are all empty in this case).
     # The return types are specified by retval=<type>
     _methods = {
-        'getDate': MethodDesc([], retval=str),
-        'getFullYear': MethodDesc([], retval=str),
-        'getMonth': MethodDesc([], retval=str),
-        'getHours': MethodDesc([], retval=str),
-        'getMinutes': MethodDesc([], retval=str),
+        'getDate': MethodDesc([], retval=int),
+        'getFullYear': MethodDesc([], retval=int),
+        'getMonth': MethodDesc([], retval=int),
+        'getHours': MethodDesc([], retval=int),
+        'getMinutes': MethodDesc([], retval=int),
     }
 
 # The Date class in Actionscript doesn't require importing any libraries, but if it did, we would import the library with:
@@ -34,8 +34,9 @@ def flash_main(a=1):
     flexTrace("Starting! python")
 
     d = Date()
-    dateString = d.getMonth() + "/" + d.getDate() + "/" + d.getFullYear()
-    timeString = d.getHours() + ":" + d.getMinutes()
+    month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"] [d.getMonth()]
+    dateString = month + " " + str(d.getDate()) + ", " + str(d.getFullYear())
+    timeString = str(d.getHours()) + ":" + str(d.getMinutes())
     flexTrace("The current date is: " +  dateString + " The current time is " + timeString)
 
     flexTrace("Im done!")
