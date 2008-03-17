@@ -8,6 +8,10 @@ from pypy.objspace.flow.model import Variable
 
 from StringIO import StringIO
 
+import_list = []
+def add_import(name):
+    import_list.append(name)
+    
 class CodeGenerator(object):
     def __init__(self, out, indentstep = 4, startblock = '{', endblock = '}'):
         self._out = out
@@ -100,7 +104,9 @@ class AsmGen(object):
             self.codegenerator.openblock()
             self.codegenerator.writeline("import py._consts_0;")
             self.codegenerator.writeline("import ll_os_path.ll_join;")
-
+            for name in import_list:
+                self.codegenerator.writeline("import "+name+";")
+            
         args = ",".join([i[1] for i in arglist])
         self.codegenerator.write("public function %s (%s) "%(name, args))
         self.codegenerator.openblock()
