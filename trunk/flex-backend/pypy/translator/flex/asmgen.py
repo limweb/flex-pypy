@@ -104,8 +104,8 @@ class AsmGen(object):
             self.codegenerator.openblock()
             self.codegenerator.writeline("import py._consts_0;")
             self.codegenerator.writeline("import ll_os_path.ll_join;")
-            for name in import_list:
-                self.codegenerator.writeline("import "+name+";")
+            for iname in import_list:
+                self.codegenerator.writeline("import "+iname+";")
             
         args = ",".join([i[1] for i in arglist])
         self.codegenerator.write("public function %s (%s) "%(name, args))
