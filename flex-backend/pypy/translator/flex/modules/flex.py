@@ -12,9 +12,8 @@ register_external(trace, args=[str], export_name="trace")
 
 def addChild(what):
     pass
-register_external(addChild, args=None, export_name="addChild")
-    
-    
+register_external(addChild, args=None, export_name="x_0.addChild")
+
 add_import("mx.controls.Button")
 class Button(BasicExternal):
     _render_class = "mx.controls.Button"
@@ -26,4 +25,13 @@ class Button(BasicExternal):
     _methods = {
         'move': MethodDesc([int, int]),
     }
+
+class Window(BasicExternal):
+    _methods = {
+        'addChild': MethodDesc([Button]),
+    }
+
+def castToWindow(i):
+    pass
+register_external(castToWindow, args=[int], result=Window,export_name="_consts_0.castToWindow")
 
