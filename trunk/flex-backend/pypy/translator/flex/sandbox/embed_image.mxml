@@ -15,5 +15,5 @@ xmlns:py="py.*"
 	} 
     ]]></mx:Script> 
     <mx:Image id="image1"/> 
-    <py:MyButton icon="@Embed(source='grossini.png')" id="pypy_01"/>
+    <py:PyResource resource="@Embed(source='grossini.png')" id="pypy_01"/>
 </mx:Application>
