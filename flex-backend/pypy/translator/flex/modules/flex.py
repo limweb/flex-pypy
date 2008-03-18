@@ -52,3 +52,28 @@ class Image(Button):
     _methods = {
         'load': MethodDesc([str]),
     }
+
+add_import("flash.net.URLRequest")
+class URLRequest(BasicExternal):
+    _render_class = "flash.net.URLRequest"
+    _fields = {
+    }
+
+    _methods = {
+    }
+
+def newURLRequest(s):
+    pass
+register_external(newURLRequest, args=[str], result=URLRequest, export_name="new URLRequest")
+
+add_import("flash.media.Sound")
+class Sound(Button):
+    _render_class = "flash.media.Sound"
+    _fields = {
+        'data': str,
+    }
+
+    _methods = {
+        'load': MethodDesc([URLRequest]),
+        'play': MethodDesc([]),
+    }
