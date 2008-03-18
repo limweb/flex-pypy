@@ -1,16 +1,12 @@
 package py {
-    public function load_image() {
 
-        import mx.core.*;
+    import mx.core.*;
 
-        trace("hello");
+    public function load_image( name:String ):Class {
 
         var app:Application = Application( Application.application );
+        var a:Class = app[name].icon;
 
-        app['button1'].visible = true;
-
-//        for (var p:String in app) { 
-//           ta1.text += p + ":" + obj[p] + "\n"; 
-//        } 
+        return a;
     }
 }
