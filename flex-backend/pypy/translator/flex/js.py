@@ -162,7 +162,7 @@ class JS(GenOO):
         """load resoucers from data directory and create embeded flex resources"""
 
         data = 'data'
-        entry_fmt ="""\t<py:PyResource resource="@Embed(source='%s/%s')" id="py_%s"/>\n"""
+        entry_fmt ="""\t<py:PyResource resource="@Embed(source='%s/%s')" id="py_%s_%s"/>\n"""
         list_entry = ""
         
         flex_valid_format = ['png','jpeg','jpg','svg','gif','swf','mp3','ttf','fon']
@@ -170,8 +170,9 @@ class JS(GenOO):
         for r in lr:
             n,e = r.split('.')
             if not (e.lower() in flex_valid_format):
-                print "*** Warning: file '%s' has an unrecognized extension: '%s'" % (r,e)
-            entry = entry_fmt % (data,r,r)
+                print "*** Warning: file '%s' has an unrecognized extension: '%s'. Skipping" % (r,e)
+                continue
+            entry = entry_fmt % (data,r,n,e)
             list_entry += entry
 
         return list_entry

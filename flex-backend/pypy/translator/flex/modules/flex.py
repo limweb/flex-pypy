@@ -12,7 +12,11 @@ register_external(trace, args=[str], export_name="trace")
 
 def addChild(what):
     pass
-register_external(addChild, args=None, export_name="x_0.addChild")
+register_external(addChild, args=None, export_name="addChild")
+
+def load_resource(what):
+    pass
+register_external(load_resource, args=None, result=str, export_name="load_resource")
 
 add_import("mx.controls.Button")
 class Event(BasicExternal):
@@ -47,6 +51,7 @@ class Image(Button):
     _render_class = "mx.controls.Image"
     _fields = {
         'data': str,
+        'source' : str,
     }
 
     _methods = {
