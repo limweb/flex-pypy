@@ -9,6 +9,7 @@ class Grossini():
 
 def flash_main( x=1 ):
     w = castToWindow( x )
+    w.setActualSize(400,400)
 
     o = Grossini()
     o.load_image(w)
