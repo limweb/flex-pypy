@@ -14,6 +14,9 @@ _consts_0.flexTrace = function ( text:String ):void {
 _consts_0.castToWindow = function ( window ){
     return window
 }
+_consts_0.castToSpriteWindow = function ( window ){
+    return window
+}
 
 // wrapper for throw, because flex compiler weirdness.
 _consts_0.throwit = function (e) {
