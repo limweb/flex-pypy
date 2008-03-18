@@ -171,7 +171,7 @@ class JS(GenOO):
             n,e = r.split('.')
             if not (e.lower() in flex_valid_format):
                 print "*** Warning: file '%s' has an unrecognized extension: '%s'" % (r,e)
-            entry = entry_fmt % (data,r,n)
+            entry = entry_fmt % (data,r,r)
             list_entry += entry
 
         return list_entry
