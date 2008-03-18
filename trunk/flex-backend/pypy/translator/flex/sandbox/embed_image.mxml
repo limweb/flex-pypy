@@ -1,0 +1,14 @@
+<?xml version="1.0"?> 
+<!-- usingas/IntrospectionAPI.mxml --> 
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" 
+creationComplete="main()"> 
+    <mx:Script><![CDATA[
+    import py.*;
+
+    public function main(): void 
+    {
+        load_image();
+	} 
+    ]]></mx:Script> 
+    <mx:Button visible="false" icon="@Embed(source='grossini.png')" label="This Button Does Nothing" id="button1"/> 
+</mx:Application>
