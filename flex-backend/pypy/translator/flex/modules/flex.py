@@ -16,7 +16,7 @@ register_external(addChild, args=None, export_name="addChild")
 
 def load_resource(what):
     pass
-register_external(load_resource, args=None, result=str, export_name="load_resource")
+register_external(load_resource, args=[str], result=str, export_name="load_resource")
 
 add_import("mx.controls.Button")
 class Event(BasicExternal):
@@ -82,6 +82,10 @@ class Sound(Button):
         'load': MethodDesc([URLRequest]),
         'play': MethodDesc([]),
     }
+
+def partial(i):
+    pass
+register_external(partial, args=[genericcallable([Event, str]), str], result=genericcallable([Event]), export_name="_consts_0.partial")
 
 add_import("mx.effects.SoundEffect")
 class SoundEffect(Button):

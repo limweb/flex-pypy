@@ -174,6 +174,11 @@ class JS(GenOO):
         list_entry = ""
         
         flex_valid_format = ['png','jpeg','jpg','svg','gif','swf','mp3','ttf','fon']
+
+        # if we don't have the directory, don't have any resource
+        if not os.access(data, os.F_OK):
+            return []
+
         lr = os.listdir(data)
         for r in lr:
             n,e = r.split('.')
