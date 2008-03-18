@@ -183,7 +183,7 @@ class JS(GenOO):
 
         # if we don't have the directory, don't have any resource
         if not os.access(data, os.F_OK):
-            return []
+            return ""
 
         lr = os.listdir(data)
         for r in lr:
