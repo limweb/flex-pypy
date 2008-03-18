@@ -10,7 +10,7 @@ xmlns:py="py.*"
 
     public function main(): void 
     {
-        var imgCls:Class = load_image('pypy_01');
+        var imgCls:Class = load_resource('pypy_01');
         image1.source = imgCls;
 	} 
     ]]></mx:Script> 
