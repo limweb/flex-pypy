@@ -1,0 +1,16 @@
+### Code quality
+
+* Add asserts
+* Add tests
+* Add comments
+* Add docstrings
+
+
+### HTML Parser
+
+* Capture documentation
+
+
+### Generator
+
+* Handle string arguments that contain commas
