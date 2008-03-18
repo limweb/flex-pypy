@@ -166,6 +166,12 @@ class JS(GenOO):
         dst.write( data )
         dst.close()
 
+        src = _path_join(os.path.dirname(__file__), 'jssrc', 'load_resource.as')
+        data = open(src).read()        
+        dst = open("py/load_resource.as", "w")
+        dst.write( data )
+        dst.close()
+
     def load_resources( self ):
         """load resoucers from data directory and create embeded flex resources"""
 
