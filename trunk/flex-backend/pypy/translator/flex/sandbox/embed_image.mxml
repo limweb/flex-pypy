@@ -1,14 +1,19 @@
 <?xml version="1.0"?> 
 <!-- usingas/IntrospectionAPI.mxml --> 
 <mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" 
-creationComplete="main()"> 
+backgroundGradientColors="[0x0000FF, 0xCCCCCC]" 
+creationComplete="main()"
+xmlns:py="py.*"
+> 
     <mx:Script><![CDATA[
     import py.*;
 
     public function main(): void 
     {
-        load_image();
+        var imgCls:Class = load_image('pypy_01');
+        image1.source = imgCls;
 	} 
     ]]></mx:Script> 
-    <mx:Button visible="false" icon="@Embed(source='grossini.png')" label="This Button Does Nothing" id="button1"/> 
+    <mx:Image id="image1"/> 
+    <py:MyButton icon="@Embed(source='grossini.png')" id="pypy_01"/>
 </mx:Application>
