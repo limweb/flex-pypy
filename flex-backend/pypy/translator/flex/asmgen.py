@@ -118,6 +118,8 @@ class AsmGen(object):
             self.codegenerator.openblock()
             self.codegenerator.writeline("import py._consts_0;")
             self.codegenerator.writeline("import ll_os_path.ll_join;")
+            for iname in import_list:
+                self.codegenerator.writeline("import "+iname+";")
 
         args = ",".join(arglist)
         self.codegenerator.write("%s.prototype.%s = function (%s)"%(_class, name, args))
@@ -137,6 +139,8 @@ class AsmGen(object):
         self.codegenerator.openblock()
         self.codegenerator.writeline("import py._consts_0;")
         self.codegenerator.writeline("import ll_os_path.ll_join;")
+        for iname in import_list:
+            self.codegenerator.writeline("import "+iname+";")
             
         self.codegenerator.write("dynamic public class %s extends %s "%(name, base))
         self.codegenerator.openblock()
