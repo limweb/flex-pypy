@@ -10,3 +10,5 @@ def flash_main( x=1 ):
     w = castToWindow( x )
     w.addChild(i)
 
+    r = load_sound_resource("py_sal_mp3")
+    r.play()
