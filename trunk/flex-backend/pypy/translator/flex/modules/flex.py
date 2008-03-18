@@ -15,17 +15,21 @@ def addChild(what):
 register_external(addChild, args=None, export_name="x_0.addChild")
 
 add_import("mx.controls.Button")
+class Event(BasicExternal):
+    pass
+    
 class Button(BasicExternal):
     _render_class = "mx.controls.Button"
     _fields = {
         'x': int,
         'y': int,
-        'label':str,
+        'label': str,
         'labelPlacement':str,
     }
 
     _methods = {
         'move': MethodDesc([int, int]),
+        'addEventListener':MethodDesc([str, genericcallable([Event])])
     }
 
 class Window(BasicExternal):
