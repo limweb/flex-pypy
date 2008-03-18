@@ -499,6 +499,14 @@ class ExtObject(AbstractConst):
         else:
             # Otherwise they just exist, or it's not implemented
             if not hasattr(self.const.value, '_render_name'):
-                raise ValueError("Prebuilt constant %s has no attribute _render_name,"
-                                  "don't know how to render" % self.const.value)
+                import sys
+                sys.stderr.write(
+                    "Prebuilt constant %s has no attribute _render_name,"
+                    "don't know how to render" % self.const.value)
+
+                #raise ValueError(
+                #    "Prebuilt constant %s has no attribute _render_name,"
+                #    "don't know how to render" % self.const.value)
+                ilasm.load_str("0")
+                return
             ilasm.load_str(self.const.value._render_name)
