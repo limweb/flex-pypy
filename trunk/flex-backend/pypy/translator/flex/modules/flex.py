@@ -35,6 +35,7 @@ class Button(BasicExternal):
 class Window(BasicExternal):
     _methods = {
         'addChild': MethodDesc([Button]),
+        'setActualSize': MethodDesc([int, int]),
     }
 
 def castToWindow(i):
