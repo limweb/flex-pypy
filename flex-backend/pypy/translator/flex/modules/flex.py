@@ -82,3 +82,16 @@ class Sound(Button):
         'load': MethodDesc([URLRequest]),
         'play': MethodDesc([]),
     }
+
+add_import("mx.effects.SoundEffect")
+class SoundEffect(Button):
+    _render_class = "mx.effects.SoundEffect"
+    _fields = {
+        'data': str,
+        'source': str,
+    }
+
+    _methods = {
+        'load': MethodDesc([URLRequest]),
+        'play': MethodDesc([]),
+    }
