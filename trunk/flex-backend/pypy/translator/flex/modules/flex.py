@@ -39,5 +39,15 @@ class Window(BasicExternal):
 
 def castToWindow(i):
     pass
-register_external(castToWindow, args=[int], result=Window,export_name="_consts_0.castToWindow")
+register_external(castToWindow, args=[int], result=Window, export_name="_consts_0.castToWindow")
 
+add_import("mx.controls.Image")
+class Image(Button):
+    _render_class = "mx.controls.Image"
+    _fields = {
+        'data': str,
+    }
+
+    _methods = {
+        'load': MethodDesc([str]),
+    }
