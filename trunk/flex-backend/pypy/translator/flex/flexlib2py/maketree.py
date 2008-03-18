@@ -41,7 +41,6 @@ Sample format of input file:
 """
 
 
-
 class chdir:
     """
     Implementation of "with chdir(path):" statement.
@@ -115,6 +114,8 @@ class AS3Tree(object):
         for name, pack in self.packages.items():
             pack.to_py()
 
+required_imports = set()
+required_imports.add('from pypy.translator.flex.asmgen import add_import')
 
 class AS3Package(object):
     """
@@ -176,16 +177,16 @@ class AS3Package(object):
         
         with chdir(pth):
             s = ''
-            imps = set()
+            global required_imports
             for clas in classes:
                 i = clas.to_py_inherit_module()
                 if i:
-                    imps.add(i)
+                    required_imports.add('import ' + i)
                 s += clas.to_py()
         
             with open(fil + '.py', 'w') as fd:
-                for i in imps:
-                    fd.write("import %s\n" % i)
+                for i in required_imports:
+                    fd.write("%s\n" % i)
                 fd.write(s)
     
 
@@ -319,6 +320,10 @@ class AS3Function(object):
             # TODO
             return ''
         
+        global required_imports
+        typ = self.typ.rstrip(string.letters + '*').rstrip('.')
+        if typ:
+            required_imports.add('import ' + typ)
         args = ""
         for arg in self.args:
             todo = ''
@@ -435,6 +440,9 @@ class Parser(object):
         Takes the raw value of an a: line, returns an AS3Attribute object.
         """
         name, typ = re.split('\s*:\s*', raw.strip())
+        typ_value = typ.split('=')
+        if len(typ_value) == 2:
+            typ = typ_value[0].strip()
         name = name.rstrip().split(" ")[-1]
         a = AS3Attribute(raw=raw, name=name, typ=typ)
         self.last_c.addAttribute(a)
