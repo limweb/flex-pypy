@@ -9,9 +9,7 @@ class Grossini():
 
 class Sonido():
     def load_sound(self):
-        s = Sound()
-        r = newURLRequest("sal.mp3")
-        s.load(r)
+        s = load_sound_resource("py_sal_mp3")
         s.play()
 
 class State(object):
