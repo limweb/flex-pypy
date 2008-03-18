@@ -142,8 +142,10 @@ class JS(GenOO):
         sio = StringIO()
         data = self.tmpfile.open().read()
 
+        self.copy_py_resource()
         src_filename = _path_join(os.path.dirname(__file__), 'jssrc', 'misc.as')
         flex_filename = _path_join(os.path.dirname(__file__), 'jssrc', 'flex.mxml')
+
         f = self.tmpfile.open("w")
         lib = open(src_filename).read()
         resources = self.load_resources()
@@ -152,11 +154,17 @@ class JS(GenOO):
         self.generate_communication_proxy()
         f.write(flex%(lib, data, resources))
         f.close()
-        
+
         self.filename = self.tmpfile
         
         return self.tmpfile
 
+    def copy_py_resource( self ):
+        src = _path_join(os.path.dirname(__file__), 'jssrc', 'PyResource.as')
+        data = open(src).read()        
+        dst = open("py/PyResource.as", "w")
+        dst.write( data )
+        dst.close()
 
     def load_resources( self ):
         """load resoucers from data directory and create embeded flex resources"""
