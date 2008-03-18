@@ -2,9 +2,9 @@
 <mx:Application 
     xmlns:mx="http://www.adobe.com/2006/mxml" 
     viewSourceURL="src/GettingStartedActionScript/index.html"
-
     creationComplete="__flash_main();"
     width="300" height="80"
+    xmlns:py="py.*"
  >
 
     <mx:Script>
@@ -15,4 +15,5 @@
 %s
         ]]>
     </mx:Script>
+%s
 </mx:Application>

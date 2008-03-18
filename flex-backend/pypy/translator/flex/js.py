@@ -146,12 +146,32 @@ class JS(GenOO):
         flex_filename = _path_join(os.path.dirname(__file__), 'jssrc', 'flex.mxml')
         f = self.tmpfile.open("w")
         lib = open(src_filename).read()
+        resources = self.load_resources()
         flex = open(flex_filename).read()
         self.ilasm = AsmGen(sio, self.assembly_name )
         self.generate_communication_proxy()
-        f.write(flex%(lib, data))
+        f.write(flex%(lib, data, resources))
         f.close()
         
         self.filename = self.tmpfile
         
         return self.tmpfile
+
+
+    def load_resources( self ):
+        """load resoucers from data directory and create embeded flex resources"""
+
+        data = 'data'
+        entry_fmt ="""\t<py:PyResource resource="@Embed(source='%s/%s')" id="py_%s"/>\n"""
+        list_entry = ""
+        
+        flex_valid_format = ['png','jpeg','jpg','svg','gif','swf','mp3','ttf','fon']
+        lr = os.listdir(data)
+        for r in lr:
+            n,e = r.split('.')
+            if not (e.lower() in flex_valid_format):
+                print "*** Warning: file '%s' has an unrecognized extension: '%s'" % (r,e)
+            entry = entry_fmt % (data,r,n)
+            list_entry += entry
+
+        return list_entry
