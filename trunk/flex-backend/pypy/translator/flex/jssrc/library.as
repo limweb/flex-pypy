@@ -202,7 +202,7 @@ _consts_0.countOf = function (s, s1, start, end) {
 }
 
 
-// Global varibales.
+// Global variables.
 
 _consts_0.GlobalVars = new Dictionary();
 
@@ -214,4 +214,14 @@ _consts_0.getGlobal = function (key)
 _consts_0.setGlobal = function (key, value)
 {
  _consts_0.GlobalVars[key] = value;
+}
+
+
+// State
+
+_consts_0.partial = function(origfunc, mess) {
+    _consts_0.newf = function(x) {
+        return origfunc(x, mess);
+    }
+    return _consts_0.newf;
 }
