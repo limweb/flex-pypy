@@ -1,3 +1,5 @@
+import flash.utils.Dictionary
+
 _consts_0.convertToString = function (stuff) {
             if (stuff === undefined) {
                return ("undefined");
@@ -198,4 +200,18 @@ _consts_0.countOf = function (s, s1, start, end) {
     }
     return (i);
 }
-   
+
+
+// Global varibales.
+
+_consts_0.GlobalVars = new Dictionary();
+
+_consts_0.getGlobal = function (key)
+{
+ return _consts_0.GlobalVars[key];
+}
+
+_consts_0.setGlobal = function (key, value)
+{
+ _consts_0.GlobalVars[key] = value;
+}
