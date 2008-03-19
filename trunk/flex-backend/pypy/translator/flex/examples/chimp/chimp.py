@@ -29,28 +29,24 @@ class Game:
         screen.addEventListener('mouseMove',mousemotion)
         screen.addEventListener('enterFrame',do_loop)
         screen.addEventListener('click',chimp_whip)
-        
-        img  = self._chimp = Image() 
-        img.load("data/chimp.png")
-        img.move(0,0)
 
-        c = self.chimp = Sprite()
-        self.chimp.addChild(img)
-        cw = castToSpriteWindow(screen)
-        #cw.addChild(c)
+        self.chimp = Image()
+        img = load_resource("py_chimp_png")
+        self.chimp.source = img
+        self.screen.addChild(self.chimp)
 
-        #self.screen.addChild(img)
+        self.orig_y = self.chimp.y
         
         img2 = self.fist =  Image()
-        img2.load("data/fist.png")
+        img2.source = load_resource("py_fist_png")
         self.screen.addChild(img2)
         img2.move(400,0)
         self.move = 1
         self.spin = 0
         
         self.sfx = {}
-        s = self.sfx['whip'] = Sound()
-        s.load(newURLRequest("data/punch.mp3"))
+        self.sfx['whip'] = load_sound_resource("py_punch_mp3")
+
     def loop(self):
         img = self.chimp
         img.x += self.move * 4
@@ -61,7 +57,6 @@ class Game:
         if self.spin:
             self.spin -= 1
             img.rotation = self.spin*49
-        pass
     
     def paint(self,screen):
         pass
