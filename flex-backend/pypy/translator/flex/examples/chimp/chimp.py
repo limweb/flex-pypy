@@ -15,7 +15,7 @@ class MyRect:
     def __init__(self,x,y,w,h):
         self.x, self.y,self.w,self.h = x,y,w,h
 
-SCREEN_W = 468
+SCREEN_W = 600
 SCREEN_H = 80
 
 class Game:
@@ -30,17 +30,14 @@ class Game:
         screen.addEventListener('enterFrame',do_loop)
         screen.addEventListener('click',chimp_whip)
 
-#        self.chimp = Image()
-#        img = load_resource("py_chimp_png")
         self.chimp = load_sprite("py_chimp_png");
         self.screen.addChild(self.chimp)
 
         self.orig_y = self.chimp.y
         
-        img2 = self.fist =  Image()
-        img2.source = load_resource("py_fist_png")
+        img2 = self.fist = load_sprite("py_fist_png")
         self.screen.addChild(img2)
-        img2.move(400,0)
+        img2.move(400,img2.height/2)
         self.move = 1
         self.spin = 0
         
