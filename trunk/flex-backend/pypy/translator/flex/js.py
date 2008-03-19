@@ -172,6 +172,12 @@ class JS(GenOO):
         dst.write( data )
         dst.close()
 
+        src = _path_join(os.path.dirname(__file__), 'jssrc', 'load_sprite.as')
+        data = open(src).read()        
+        dst = open("py/load_sprite.as", "w")
+        dst.write( data )
+        dst.close()
+
         src = _path_join(os.path.dirname(__file__), 'jssrc', 'load_sound_resource.as')
         data = open(src).read()        
         dst = open("py/load_sound_resource.as", "w")
