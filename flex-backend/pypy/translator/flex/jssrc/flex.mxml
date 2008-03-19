@@ -5,6 +5,7 @@
     creationComplete="__flash_main();"
     clipContent="false"
     width="500" height="500"
+    frameRate="60"
     xmlns:py="py.*"
  >
 
