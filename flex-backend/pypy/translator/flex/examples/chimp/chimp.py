@@ -30,9 +30,9 @@ class Game:
         screen.addEventListener('enterFrame',do_loop)
         screen.addEventListener('click',chimp_whip)
 
-        self.chimp = Image()
-        img = load_resource("py_chimp_png")
-        self.chimp.source = img
+#        self.chimp = Image()
+#        img = load_resource("py_chimp_png")
+        self.chimp = load_sprite("py_chimp_png");
         self.screen.addChild(self.chimp)
 
         self.orig_y = self.chimp.y

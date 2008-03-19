@@ -135,6 +135,10 @@ def load_resource(what):
     pass
 register_external(load_resource, args=[str], result=str, export_name="load_resource")
 
+def load_sprite(what):
+    pass
+register_external(load_sprite, args=[str], result=Image, export_name="load_sprite")
+
 def load_sound_resource(what):
     pass
 register_external(load_sound_resource, args=[str], result=SoundAsset, export_name="load_sound_resource")
