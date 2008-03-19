@@ -40,6 +40,8 @@ class Game:
         img2.move(400,img2.height/2)
         self.move = 1
         self.spin = 0
+        self.hit = 0
+        self.hit_move = 1
         
         self.sfx = {}
         self.sfx['whip'] = load_sound_resource("py_punch_mp3")
@@ -47,15 +49,24 @@ class Game:
 
     def loop(self):
         img = self.chimp
-        img.x += self.move * 4
-        if img.x > SCREEN_W-img.width:
-            self.move = -1
-        if img.x < 0:
-            self.move = 1
         if self.spin:
             self.spin -= 1
-            img.rotation = self.spin*49
-    
+            img.rotation = self.spin*24
+        else:
+            img.x += self.move * 8
+            if img.x > SCREEN_W-img.width:
+                self.move = -1
+            if img.x < 0:
+                self.move = 1
+
+        if self.hit:
+            self.hit -= 1
+            self.fist.y += 6 * self.hit_move
+
+            if self.hit <= 5:
+                self.hit_move = -1
+
+
     def paint(self,screen):
         pass
 game = Game()
@@ -78,6 +89,9 @@ def do_loop(e):
 
 def chimp_whip(e):
     img = game.chimp
+    game.hit = 10
+    game.hit_move = 1
+    game.fist.y=game.fist.height/2
     if e.stageX > img.x and e.stageX < img.x+img.width:
         game.sfx['whip'].play()
         game.spin = 20
@@ -88,5 +102,3 @@ def chimp_whip(e):
 
 def flash_main( x=1 ):
     game.init(castToWindow(x))
-    
-    
