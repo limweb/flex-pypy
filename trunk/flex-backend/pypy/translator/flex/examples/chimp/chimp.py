@@ -16,7 +16,7 @@ class MyRect:
         self.x, self.y,self.w,self.h = x,y,w,h
 
 SCREEN_W = 468
-SCREEN_H = 80
+SCREEN_H = 60
 
 class Game:
     def __init__(self):pass
@@ -29,6 +29,10 @@ class Game:
         screen.addEventListener('mouseMove',mousemotion)
         screen.addEventListener('enterFrame',do_loop)
         screen.addEventListener('click',chimp_whip)
+
+        self.bg = load_sprite("py_background_png");
+        self.screen.addChild(self.bg)
+
 
         self.chimp = load_sprite("py_chimp_png");
         self.screen.addChild(self.chimp)
@@ -75,7 +79,6 @@ def mousemotion(e):
     img = game.fist
     img_halfw = img.width / 2
     newx = e.stageX - img_halfw
-    
     # don't reach the borders
     if e.stageX > SCREEN_W - img_halfw:
         newx = SCREEN_W - img.width

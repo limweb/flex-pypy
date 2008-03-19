@@ -5,7 +5,9 @@ from pypy.rpython.ootypesystem.bltregistry import BasicExternal, MethodDesc
 def callback(event):
     flexTrace("hola")        
    
-    
+class Clase:
+    def metodo(self):
+        flexTrace("hola")
         
 def flash_main( x=1 ):
     window = castToWindow( x ) 
@@ -15,6 +17,8 @@ def flash_main( x=1 ):
     b.x=20
     b.y=52
 
+    a = Clase()
+    a.metodo()
     window.addChild(b)
     
     

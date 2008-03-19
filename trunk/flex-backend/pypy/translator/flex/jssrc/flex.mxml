@@ -3,8 +3,10 @@
     xmlns:mx="http://www.adobe.com/2006/mxml" 
     viewSourceURL="src/GettingStartedActionScript/index.html"
     creationComplete="__flash_main();"
-    clipContent="false"
-    width="500" height="500"
+    clipContent="true"
+    verticalScrollPolicy="off"
+    horizontalScrollPolicy="off"
+    width="468" height="10"
     frameRate="60"
     xmlns:py="py.*"
  >

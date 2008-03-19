@@ -15,6 +15,11 @@ from pypy.config.config import OptionDescription, BoolOption, StrOption
 from pypy.config.config import Config, to_optparse
 import py
 import sys
+from pypy.objspace.flow.model import Constant
+from pypy.annotation import model as annmodel
+from pypy.annotation.bookkeeper import getbookkeeper
+from pypy.annotation import specialize
+from pypy.interpreter import baseobjspace
 
 js_optiondescr = OptionDescription("jscompile", "", [
     BoolOption("view", "View flow graphs",
@@ -30,10 +35,13 @@ class FunctionNotFound(Exception):
 
 class BadSignature(Exception):
     pass
+    
+
 
 class JsPolicy(AnnotatorPolicy):
     allow_someobjects = False
-
+    
+  
 def get_args(func_data):
     l = []
     for i in xrange(func_data.func_code.co_argcount):
