@@ -15,13 +15,16 @@ class MyRect:
     def __init__(self,x,y,w,h):
         self.x, self.y,self.w,self.h = x,y,w,h
 
+SCREEN_W = 468
+SCREEN_H = 80
+
 class Game:
     def __init__(self):pass
     
     def init(self,screen):
         self.screen = screen
         screen.layout = 'absolute'
-        screen.setActualSize(468,80)
+        screen.setActualSize(SCREEN_W, SCREEN_H)
         
         screen.addEventListener('mouseMove',mousemotion)
         screen.addEventListener('enterFrame',do_loop)
@@ -51,7 +54,7 @@ class Game:
     def loop(self):
         img = self.chimp
         img.x += self.move * 4
-        if img.x > 468-img.width:
+        if img.x > SCREEN_W-img.width:
             self.move = -1
         if img.x < 0:
             self.move = 1
@@ -66,10 +69,20 @@ game = Game()
 
 def mousemotion(e):
     img = game.fist
-    img.x = e.stageX-img.width/2
-    #img.y = e.stageY
+    img_halfw = img.width / 2
+    newx = e.stageX - img_halfw
+    
+    # don't reach the borders
+    if e.stageX > SCREEN_W - img_halfw:
+        newx = SCREEN_W - img.width
+    if newx <= 0:
+        newx = 0
+
+    img.x = newx
+
 def do_loop(e):
     game.loop()
+
 def chimp_whip(e):
     img = game.chimp
     if e.stageX > img.x and e.stageX < img.x+img.width:
