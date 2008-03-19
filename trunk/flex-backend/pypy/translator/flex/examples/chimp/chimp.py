@@ -15,7 +15,7 @@ class MyRect:
     def __init__(self,x,y,w,h):
         self.x, self.y,self.w,self.h = x,y,w,h
 
-SCREEN_W = 600
+SCREEN_W = 468
 SCREEN_H = 80
 
 class Game:
