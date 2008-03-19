@@ -71,6 +71,7 @@ class BaseGenerator(object):
         self.ilasm.castclass(cts_type)
         
     def new(self, obj):
+        log("newobj", obj)
         self.ilasm.new(self.cts.obj_name(obj))
 
     def set_field(self, obj, name):
