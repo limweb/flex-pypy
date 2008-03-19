@@ -46,6 +46,7 @@ class Game:
         
         self.sfx = {}
         self.sfx['whip'] = load_sound_resource("py_punch_mp3")
+        self.sfx['nohit'] = load_sound_resource("py_whiff_mp3")
 
     def loop(self):
         img = self.chimp
@@ -83,6 +84,8 @@ def chimp_whip(e):
     if e.stageX > img.x and e.stageX < img.x+img.width:
         game.sfx['whip'].play()
         game.spin = 20
+    else:
+        game.sfx['nohit'].play()
     
 
 
